@@ -21,7 +21,12 @@ const allowedOrigins = [
   "https://fab-nest-admin1.vercel.app",
   "https://fabnest.vercel.app",
 ];
-app.use(cors({ origin: allowedOrigins }));
+app.use(
+  cors({
+    origin: allowedOrigins,
+    allowedHeaders: ["Content-Type", "Authorization", "Cookie"],
+  })
+);
 
 // api endpoints
 app.use("/api/user", userRouter);
