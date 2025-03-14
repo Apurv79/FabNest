@@ -15,16 +15,14 @@ const Product = () => {
 
   useEffect(() => {
     if (products?.length > 0) {
-      // ✅ Ensure products exist before searching
       const product = products.find((item) => item._id === productId);
       if (product) {
         setProductData(product);
-        setImage(product?.image?.[0] || ""); // ✅ Prevent errors if image array is empty
+        setImage(product?.image?.[0] || "");
       }
     }
-  }, [productId, products]); // ✅ Re-run when `products` updates
+  }, [productId, products]);
 
-  // ✅ Loading state while data is being fetched
   if (!productData) {
     return (
       <div className="text-center py-10 text-gray-500">
@@ -35,7 +33,7 @@ const Product = () => {
 
   return (
     <div className="border-t-2 pt-2 transition-opacity ease-in duration-500 opacity-100">
-      <div className="flex flex-col sm:flex-row items-start justify-center gap-8 sm:gap-12">
+      <div className="flex flex-col sm:flex-row items-start justify-center gap-8 sm:gap-12 mt-8 mb-10">
         {/* Left Section - Product Images */}
         <div className="flex-1 flex gap-3 sm:gap-6">
           {/* Thumbnail Images */}
@@ -61,7 +59,7 @@ const Product = () => {
               <img
                 src={image}
                 alt="Product"
-                className="w-full h-[400px] object-cover object-top rounded-lg"
+                className="w-full h-[520px] object-cover object-top rounded-lg"
               />
             </div>
           </div>
@@ -110,7 +108,7 @@ const Product = () => {
             </div>
           </div>
           <button
-            className="bg-black text-white px-8 py-3 text-sm active:bg-gray-700"
+            className="bg-black text-white px-8 py-3 text-sm active:bg-gray-700 mb-6"
             onClick={() => {
               if (size) {
                 addToCart(productData._id, size);
@@ -122,20 +120,20 @@ const Product = () => {
           >
             ADD TO CART
           </button>
-          <hr className="mt-8 sm:w-4/5" />
-          <div className="text-sm text-gray-500 mt-5 flex flex-col gap-1">
-            <p>100% Original Product</p>
-            <p>Cash on Delivery Available</p>
-            <p>Easy Return and Exchange within 7 days</p>
+          <hr className="mt-4 sm:w-4/5" />
+          <div className="text-sm text-gray-500 mt-5 flex flex-col gap-2">
+            <p>✅ 100% Original Product</p>
+            <p>🚀 Cash on Delivery Available</p>
+            <p>🔄 Easy Return and Exchange within 7 days</p>
           </div>
         </div>
       </div>
 
       {/* Product Description & Reviews */}
-      <div className="mt-20">
-        <div className="flex">
-          <p className="border p-5  py-3 text-sm">Description</p>
-          <p className="border p-5  py-3 text-sm">Review (122)</p>
+      <div className="mb-20">
+        <div className="flex border-b">
+          <p className="border p-5 py-3 text-sm">Description</p>
+          <p className="border p-5 py-3 text-sm">Review (122)</p>
         </div>
         <div className="flex flex-col py-6 text-sm text-gray-500 gap-4 border">
           <p>
