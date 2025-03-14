@@ -25,6 +25,7 @@ app.use(
   cors({
     origin: allowedOrigins,
     allowedHeaders: ["Content-Type", "Authorization", "Cookie"],
+    credentials: true,
   })
 );
 
