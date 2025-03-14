@@ -37,6 +37,8 @@ app.use(
   })
 );
 
+// app.use(cors({ origin: "*" }));
+app.use(express.json());
 // api endpoints
 app.use("/api/user", userRouter);
 app.use("/api/product", productRouter);
