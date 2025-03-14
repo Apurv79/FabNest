@@ -5,11 +5,14 @@ import { backendUrl } from "../App.jsx";
 import axios from "axios";
 import { toast } from "react-toastify";
 
+import { useNavigate } from "react-router-dom";
+
 const Login = ({ setToken }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   // console.log(email, password);
+  const navigate = useNavigate();
 
   const onSubmitHandler = async (e) => {
     try {
@@ -23,6 +26,8 @@ const Login = ({ setToken }) => {
       if (response.data.success) {
         console.log(response.data.token);
         localStorage.setItem("token", response.data.token);
+        navigate("/add");
+        window.location.reload(true);
         // setToken(response.data.token);
       } else {
         toast.error(response.data.message);
