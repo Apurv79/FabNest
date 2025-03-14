@@ -1,4 +1,3 @@
-import Navbar from "./components/Navbar";
 import React, { useEffect } from "react";
 import SideBar from "./components/SideBar";
 import { Routes, Route } from "react-router-dom";
@@ -8,7 +7,7 @@ import Orders from "./pages/Orders";
 import Login from "./components/Login";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import Navbar from "./components/Navbar";
 export const backendUrl = import.meta.env.VITE_BACKEND_URL;
 export const currency = "₹";
 
