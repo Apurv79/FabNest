@@ -14,18 +14,26 @@ const app = express();
 const port = process.env.PORT || 4000;
 connectDB();
 connectCloudinary();
-
-// middleware
-app.use(express.json());
 const allowedOrigins = [
   "https://fab-nest-admin1.vercel.app",
   "https://fabnest.vercel.app",
+  "http://localhost:3000",
+  "http://localhost:5173",
+  "http://localhost:5174",
 ];
+
 app.use(
   cors({
-    origin: allowedOrigins,
-    allowedHeaders: ["Content-Type", "Authorization", "Cookie"],
-    credentials: true,
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true, // ✅ Allows cookies, authentication headers
+    methods: "GET,POST,PUT,DELETE", // ✅ Allow these HTTP methods
+    allowedHeaders: "Content-Type,Authorization", // ✅ Allow headers like Authorization
   })
 );
 
