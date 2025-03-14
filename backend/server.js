@@ -17,7 +17,11 @@ connectCloudinary();
 
 // middleware
 app.use(express.json());
-app.use(cors({ origin: "*" }));
+const allowedOrigins = [
+  "https://fab-nest-admin1.vercel.app",
+  "https://fabnest.vercel.app",
+];
+app.use(cors({ origin: allowedOrigins }));
 
 // api endpoints
 app.use("/api/user", userRouter);
